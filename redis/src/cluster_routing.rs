@@ -383,7 +383,7 @@ fn base_routing(cmd: &[u8]) -> RouteBy {
         | b"WAITAOF" => RouteBy::AllPrimaries,
 
         b"MGET" | b"DEL" | b"EXISTS" | b"UNLINK" | b"TOUCH" => RouteBy::MultiShardNoValues,
-        b"MSET" => RouteBy::MultiShardWithValues,
+        b"MSET" | b"MSETNX" => RouteBy::MultiShardWithValues,
 
         // TODO - special handling - b"SCAN"
         b"SCAN" | b"SHUTDOWN" | b"SLAVEOF" | b"REPLICAOF" => RouteBy::Undefined,
